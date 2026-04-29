@@ -3,16 +3,16 @@
 import { ThemeProvider } from "@/providers/themeProvider/ThemeProvider";
 import ReactLenis from "lenis/react";
 import AboutMetric from '@/components/sections/about/AboutMetric';
-import ContactCTA from '@/components/sections/contact/ContactCTA';
+import ContactSplitForm from '@/components/sections/contact/ContactSplitForm';
 import FaqSplitText from '@/components/sections/faq/FaqSplitText';
 import FeatureCardEight from '@/components/sections/feature/FeatureCardEight';
-import FooterLogoEmphasis from '@/components/sections/footer/FooterLogoEmphasis';
+import FooterCard from '@/components/sections/footer/FooterCard';
 import HeroSplit from '@/components/sections/hero/HeroSplit';
 import MetricCardOne from '@/components/sections/metrics/MetricCardOne';
 import NavbarStyleCentered from '@/components/navbar/NavbarStyleCentered/NavbarStyleCentered';
 import ProductCardOne from '@/components/sections/product/ProductCardOne';
 import TestimonialCardSix from '@/components/sections/testimonial/TestimonialCardSix';
-import { Award, Calendar, Smile, Star, Users, Wrench } from "lucide-react";
+import { Award, Calendar, Smile, Star, Users, Wrench, MapPin, Phone, Mail } from "lucide-react";
 
 export default function LandingPage() {
   return (
@@ -165,27 +165,27 @@ export default function LandingPage() {
   </div>
 
   <div id="contact" data-section="contact">
-      <ContactCTA
-      useInvertedBackground={false}
-      background={{ variant: "plain" }}
-      tag="Contact Us"
+      <ContactSplitForm
       title="Ready to get back on the road?"
       description="Visit us at 1321 Castle Hill Ave, Bronx, or call us for service inquiries at (718) 863-7221."
-      buttons={[
-        { text: "Call Now", onClick: () => window.location.href = "tel:+17188637221" },
-        { text: "Get Directions", onClick: () => window.open("https://maps.google.com/?q=1321+Castle+Hill+Ave+Bronx+NY", "_blank") },
+      inputs={[
+          { name: "name", type: "text", placeholder: "Full Name", required: true },
+          { name: "email", type: "email", placeholder: "Email Address", required: true }
       ]}
+      textarea={{ name: "message", placeholder: "How can we help you?", required: true }}
+      useInvertedBackground={false}
+      imageSrc="http://img.b2bpic.net/free-photo/mechanic-examining-bicycle-wheel_1170-2563.jpg"
     />
   </div>
 
   <div id="footer" data-section="footer">
-      <FooterLogoEmphasis
-      columns={[
-        { items: [{ label: "Services", href: "#features" }, { label: "Toy Collection", href: "#toys" }] },
-        { items: [{ label: "Reviews", href: "#testimonials" }, { label: "Contact", href: "#contact" }] },
-        { items: [{ label: "Privacy Policy", onClick: () => {} }, { label: "Terms of Service", onClick: () => {} }] },
-      ]}
+      <FooterCard
       logoText="Castle Hill Bike & Toy"
+      socialLinks={[
+        { icon: MapPin, href: "https://maps.google.com/?q=1321+Castle+Hill+Ave+Bronx+NY", ariaLabel: "Directions" },
+        { icon: Phone, href: "tel:+17188637221", ariaLabel: "Call us" },
+        { icon: Mail, href: "mailto:support@castlehillbike.com", ariaLabel: "Email us" }
+      ]}
     />
   </div>
       </ReactLenis>
